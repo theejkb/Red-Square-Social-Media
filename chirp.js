@@ -16,7 +16,7 @@ class Chirp extends ModTemplate {
     this.categories = "Social Information Community";
 
     this.events = ["chat-render-request"];
-    this.icon_fa = "fa-solid fa-bird";
+    this.icon_fa = "fas fa-crow";
     this.mods = [];
     this.affix_callbacks_to = [];
 
@@ -136,7 +136,7 @@ class Chirp extends ModTemplate {
           returnMenu: function (app, mod) {
             return `
               <div class="wallet-action-row" id="header-dropdown-new-chirp">
-                <span class="scan-qr-info"><i class="settings-fas-icon fa fa-twitter"></i> New Post</span>
+                <span class="scan-qr-info"><i class="settings-fas-icon fas fa-crow"></i> New Chirp</span>
               </div>
       `;
           },
