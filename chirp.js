@@ -1,9 +1,10 @@
 const saito = require("./../../lib/saito/saito");
-const SaitoOverlay = require("../../lib/saito/ui/saito-overlay/saito-overlay");
 const ModTemplate = require("../../lib/templates/modtemplate");
 const SaitoHeader = require("../../lib/saito/ui/saito-header/saito-header");
+const SaitoOverlay = require("../../lib/saito/ui/saito-overlay/saito-overlay");
 const ChirpSidebar = require("./lib/chirp/chirp-sidebar");
 const ChirpFeed = require("./lib/chirp/chirp-feed");
+const ChirpNew = require("./lib/chirp/chirp-new");
 
 class Chirp extends ModTemplate {
 
@@ -143,6 +144,8 @@ class Chirp extends ModTemplate {
             document.querySelectorAll("#header-dropdown-new-chirp").forEach((element) => {
               element.onclick = (e) => {
 	        alert("HTML Overlay?");
+		ChirpNew.render(app, mod);
+		ChirpNew.attachEvents(app, mod);
               };
             });
           },
@@ -196,6 +199,8 @@ class Chirp extends ModTemplate {
     this.header = new SaitoHeader(app, this);
     this.header.render(app, this);
     this.header.attachEvents(app, this);
+
+    this.overlay = new SaitoOverlay(app);
 
     this.renderMain();
     this.renderSidebar();
@@ -323,8 +328,19 @@ class Chirp extends ModTemplate {
   }
 
 
+  createPost() {
 
-  createPost(message) {
+    
+    let html = `
+
+
+    `;
+
+    
+
+  }
+
+  createPostTransaction(message) {
 
     let recipient = this.app.wallet.returnPublicKey();
 
