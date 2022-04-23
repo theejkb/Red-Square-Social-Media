@@ -2,8 +2,8 @@ const saito = require("./../../lib/saito/saito");
 const SaitoOverlay = require("../../lib/saito/ui/saito-overlay/saito-overlay");
 const ModTemplate = require("../../lib/templates/modtemplate");
 const SaitoHeader = require("../../lib/saito/ui/saito-header/saito-header");
-const ChirpMain = require("./lib/chirp/chirp-main");
 const ChirpSidebar = require("./lib/chirp/chirp-sidebar");
+const ChirpFeed = require("./lib/chirp/chirp-feed");
 
 class Chirp extends ModTemplate {
 
@@ -15,7 +15,7 @@ class Chirp extends ModTemplate {
     this.categories = "Social Information Community";
 
     this.events = ["chat-render-request"];
-    this.icon_fa = "fas fa-twitter";
+    this.icon_fa = "fa-solid fa-bird";
     this.mods = [];
     this.affix_callbacks_to = [];
 
@@ -93,8 +93,8 @@ class Chirp extends ModTemplate {
   //
   renderMain() {
     if (this.browser_active == 1) {
-      ChirpMain.render(this.app, this);
-      ChirpMain.attachEvents(this.app, this);
+      ChirpFeed.render(this.app, this);
+      ChirpFeed.attachEvents(this.app, this);
     }
   }
 
@@ -107,8 +107,8 @@ class Chirp extends ModTemplate {
   //
   renderSidebar() {
     if (this.browser_active == 1) {
-      ChirpMain.render(this.app, this);
-      ChirpMain.attachEvents(this.app, this);
+      ChirpSidebar.render(this.app, this);
+      ChirpSidebar.attachEvents(this.app, this);
     }
   }
 
@@ -135,7 +135,7 @@ class Chirp extends ModTemplate {
           returnMenu: function (app, mod) {
             return `
               <div class="wallet-action-row" id="header-dropdown-new-chirp">
-                <span class="scan-qr-info"><i class="settings-fas-icon fas fa-twitter"></i> New Post</span>
+                <span class="scan-qr-info"><i class="settings-fas-icon fa fa-twitter"></i> New Post</span>
               </div>
       `;
           },
@@ -226,7 +226,7 @@ class Chirp extends ModTemplate {
 
       (res) => {
         if (res.rows) {
-	  alert("fetched posts: " + res.rows.length);
+	  //alert("fetched posts: " + res.rows.length);
 	}
       }
     );
